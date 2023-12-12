@@ -19,6 +19,7 @@ import DoneOutlineIcon from "@mui/icons-material/DoneOutline";
 import NextPlanIcon from "@mui/icons-material/NextPlan";
 import ViewWeekIcon from "@mui/icons-material/ViewWeek";
 import EventAvailableIcon from "@mui/icons-material/EventAvailable";
+import VersetulZilei from "./menu-items/verse-card/index"; 
 
 const drawerWidth = 240;
 const icons = [WbSunnyIcon, NextPlanIcon, ViewWeekIcon, EventAvailableIcon];
@@ -118,15 +119,16 @@ const ClippedDrawer = () => {
                 border: "2px #fff solid",
               }}
             >
-              dasda
+              
             </Box>
           </Box>
         </Box>
       </Drawer>
       <Box component="main" sx={{ flexGrow: 1, p: 3 }}>
         <Toolbar />
-       
+        <VersetulZilei/>
       </Box>
+      
     </Box>
   );
 };
