@@ -1,0 +1,7 @@
+[
+  { "title": "Today", "icon": "material-symbols:today" },
+  { "title": "Tommorow", "icon": "material-symbols-outlined" },
+  { "title": "This Week", "icon": "material-symbols-outlined" },
+  { "title": "Tasks", "icon": "material-symbols-outlined" },
+  { "title": "Planned", "icon": "material-symbols-outlined" }
+]
