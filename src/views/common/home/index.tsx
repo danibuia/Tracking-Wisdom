@@ -1,10 +1,10 @@
 import { FC } from "react";
-import { Header, SideDrawer } from "../../../components/common";
+import {  SideDrawer } from "../../../components/common";
 
 const Home: FC = (): JSX.Element => {
   return (
     <>
-      <Header />
+      {/* <Header /> */}
       <SideDrawer />
     </>
   );

@@ -1,3 +1,4 @@
+import { Box, Link, Typography } from "@mui/material";
 import React, { useEffect, useState } from "react";
 
 interface VerseData {
@@ -10,7 +11,8 @@ const VersetulZilei: React.FC = () => {
   const [verseData, setVerseData] = useState<VerseData | null>(null);
 
   const parseResponseData = (responseData: string): VerseData => {
-    const regex = /document\.writeln\('(.*)'\);document\.write\('<a onclick="var w=window.open\(this\.href\);w\.focus\(\);return false;" href="(.*)">(.*)<\/a>'\);/;
+    const regex =
+      /document\.writeln\('(.*)'\);document\.write\('<a onclick="var w=window.open\(this\.href\);w\.focus\(\);return false;" href="(.*)">(.*)<\/a>'\);/;
     const match = responseData.match(regex);
 
     if (match && match.length === 4) {
@@ -42,18 +44,24 @@ const VersetulZilei: React.FC = () => {
   }, []);
 
   return (
-    <div>
+    <Box sx={{ textAlign: "center" }}>
       {verseData && (
-        <div>
-          <h2>Versetul Zilei</h2>
-          <p>{verseData.text}</p>
-          <p>Reference: {verseData.reference}</p>
-          <a href={verseData.href} target="_blank" rel="noopener noreferrer">
-          {verseData.reference}
-          </a>
-        </div>
+        <Box>
+          <Typography variant="h6">Versetul Zilei</Typography>
+          <Link
+            underline="none"
+            href={verseData.href}
+            target="_blank"
+            rel="noopener noreferrer"
+          >
+            {verseData.reference}
+          </Link>
+          <Typography sx={{ marginTop: 2, whiteSpace: "pre-wrap" }}>
+            {verseData.text}
+          </Typography>
+        </Box>
       )}
-    </div>
+    </Box>
   );
 };
 
