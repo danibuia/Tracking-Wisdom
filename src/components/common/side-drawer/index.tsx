@@ -117,6 +117,8 @@ export default function SideDrawer() {
                 key={text}
                 text={text}
                 index={index}
+                minutes='2m'
+                tasks={2}
                 open={open}
                 onClick={handleDrawerOpen}
               />
