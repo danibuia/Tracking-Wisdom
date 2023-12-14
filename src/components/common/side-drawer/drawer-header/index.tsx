@@ -1,34 +1,35 @@
-import { ChevronLeft } from '@mui/icons-material';
-import { IconButton, styled } from '@mui/material';
-import { FC, ReactNode } from 'react';
+// CustomAppBar.tsx
+import MuiAppBar, { AppBarProps as MuiAppBarProps } from "@mui/material/AppBar";
+import { styled,} from "@mui/material/styles";
 
-const Wrapper: FC<{ children: ReactNode }> = styled('div')(({ theme }) => ({
-    display: 'flex',
-    alignItems: 'center',
-    justifyContent: 'flex-end',
-    padding: theme.spacing(0, 1),
-    // necessary for content to be below app bar
-    ...theme.mixins.toolbar,
-}));
+import Toolbar from "@mui/material/Toolbar";
 
-interface IProps {
-    open: boolean;
-    closeDrawer: () => void;
+interface CustomAppBarProps extends MuiAppBarProps {
+  open?: boolean;
 }
 
-const DrawerHeader: FC<IProps> = ({ open, closeDrawer }) => (
-    <Wrapper>
-        <IconButton onClick={closeDrawer}>
-            <ChevronLeft
-                fontSize='large'
-                sx={{
-                    transform: `rotate(${open ? 0 : 180}deg)`,
-                    transition: 'all 0.3s ease-in',
-                    color: '#fff'
-                }}
-            />
-        </IconButton>
-    </Wrapper>
-);
+const drawerWidth = 240;
 
-export default DrawerHeader;
+const CustomAppBar = styled(MuiAppBar, {
+  shouldForwardProp: (prop) => prop !== "open",
+})<CustomAppBarProps>(({ theme, open }) => ({
+  zIndex: theme.zIndex.drawer + 1,
+  transition: theme.transitions.create(["width", "margin"], {
+    easing: theme.transitions.easing.sharp,
+    duration: theme.transitions.duration.leavingScreen,
+  }),
+  ...(open && {
+    marginLeft: drawerWidth,
+    width: `calc(100% - ${drawerWidth}px)`,
+    transition: theme.transitions.create(["width", "margin"], {
+      easing: theme.transitions.easing.sharp,
+      duration: theme.transitions.duration.enteringScreen,
+    }),
+  }),
+}));
+
+const CustomToolbar = styled(Toolbar)(({}) => ({
+  paddingRight: 24, // keep right padding when drawer closed
+}));
+
+export { CustomAppBar, CustomToolbar };

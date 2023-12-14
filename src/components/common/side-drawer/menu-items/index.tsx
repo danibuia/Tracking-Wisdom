@@ -1,55 +1,52 @@
-// MenuItems.tsx
-import { FC } from "react";
+// CustomListItems.tsx
+import React from "react";
+import ListItem from "@mui/material/ListItem";
+import ListItemButton from "@mui/material/ListItemButton";
+import ListItemIcon from "@mui/material/ListItemIcon";
+import ListItemText from "@mui/material/ListItemText";
 import {
-  List,
-  ListItem,
-  ListItemButton,
-  ListItemIcon,
-  ListItemText,
-} from "@mui/material";
-import { useNavigate } from "react-router-dom";
-import { Icon } from "@iconify/react";
+  WbSunnyOutlined as WbSunnyIcon,
+  WbTwilightOutlined as WbTwilightIcon,
+  DoneOutlineOutlined as DoneOutlineIcon,
+  FormatListBulletedOutlined as FormatListBulletedIcon,
+  EditCalendarOutlined as EditCalendarOutlinedIcon,
+} from "@mui/icons-material";
 
-export interface MenuItem {
-  title: string;
-  icon: string;
-  type: string;
-  url: string;
-  duration: string;
-  tasks: string;
+interface CustomListItemProps {
+  text: string;
+  index: number;
+  open: boolean;
+  onClick: () => void;
 }
 
-interface MenuItemsProps {
-  menuItems: MenuItem[];
-}
-
-const MenuItems: FC<MenuItemsProps> = ({ menuItems }) => {
-  const navigate = useNavigate();
-
+const CustomListItem: React.FC<CustomListItemProps> = ({ text, index, open, onClick }) => {
   return (
-    <List sx={{ overflow: "hidden", pt: 0 }}>
-      {menuItems.map((item) => (
-        <ListItem
-          key={item.title}
-          disablePadding
-          onClick={() => item.url && navigate(item.url)}
+    <ListItem key={text} disablePadding sx={{ display: "block" }}>
+      <ListItemButton
+        sx={{
+          minHeight: 48,
+          justifyContent: open ? "initial" : "center",
+          px: 2.5,
+        }}
+        onClick={onClick}
+      >
+        <ListItemIcon
+          sx={{
+            minWidth: 0,
+            mr: open ? 3 : "auto",
+            justifyContent: "center",
+          }}
         >
-          <ListItemButton
-            disableRipple
-            sx={{ minHeight: 40, justifyContent: "initial", px: 2.5 }}
-          >
-            <ListItemIcon>
-              <Icon color="#fff" icon={item.icon} />
-            </ListItemIcon>
-            <ListItemText
-              primary={item.title}
-              sx={{ opacity: 1, color: "#fff" }}
-            />
-          </ListItemButton>
-        </ListItem>
-      ))}
-    </List>
+          {index === 0 && <WbSunnyIcon />}
+          {index === 1 && <WbTwilightIcon />}
+          {index === 2 && <EditCalendarOutlinedIcon />}
+          {index === 3 && <FormatListBulletedIcon />}
+          {index === 4 && <DoneOutlineIcon />}
+        </ListItemIcon>
+        <ListItemText primary={text} sx={{ opacity: open ? 1 : 0 }} />
+      </ListItemButton>
+    </ListItem>
   );
 };
 
-export default MenuItems;
+export default CustomListItem;
