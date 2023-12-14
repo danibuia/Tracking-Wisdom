@@ -6,22 +6,22 @@ const darkTheme = (common: Omit<ThemeOptions, 'palette'>): Theme =>
 		palette: {
 			mode: 'dark',
 			primary: {
-				main: '#B63E56',
+				main: '#748cab',
 			},
 			secondary: {
 				main: '#0E3666',
 			},
 			common: {
-				black: '#2B2934',
-				white: '#F6FAF8',
+				black: '#3e5c76',
+				white: '#f0ebd8',
 			},
 			background: {
 				default: '#FFFFFF',
-				paper: '#696969',
+				paper: '#686868',
 			},
 			text: {
-				primary: '#F6FAF8',
-				secondary: '#696969',
+				primary: '#f0ebd8',
+				secondary: '#686868',
 			},
 		},
 	});
