@@ -87,7 +87,7 @@ const common: Omit<ThemeOptions, 'palette'> = {
 		},
 		MuiToolbar: {
 			defaultProps: {
-				variant: 'dense',
+				variant: 'regular',
 			},
 		},
 		MuiTypography: {

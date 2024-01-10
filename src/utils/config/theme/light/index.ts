@@ -12,7 +12,7 @@ const lightTheme = (common: Omit<ThemeOptions, 'palette'>): Theme =>
 				main: '#0E3666',
 			},
 			common: {
-				black: '#3e5c76',
+				black: '#0d1321',
 				white: '#f0ebd8'
 			},
 			background: {
@@ -20,8 +20,8 @@ const lightTheme = (common: Omit<ThemeOptions, 'palette'>): Theme =>
 				paper: '#F6FAF8',
 			},
 			text: {
-				primary: '#3e5c76',
-				secondary: '#696969',
+				primary: '#0d1321',
+				secondary: '#1d2d44',
 			},
 		},
 	});
