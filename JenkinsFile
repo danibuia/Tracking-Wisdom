@@ -2,13 +2,14 @@
 pipeline {
     agent any
     stages {
-        // stage('Checkout') {
-        //     steps {
-        //         script {
-        //             git branch: 'master', url: 'https://github.com/danibuia/Tracking-Wisdom.git'
-        //         }
-        //     }
-        // }
+        stage('Checkout') {
+            steps {
+                script {
+                    checkout scmGit(branches: [[name: '*/master']], extensions: [],
+                    userRemoteConfigs:[[url: 'https://github.com/danibuia/Tracking-Wisdom.git']])
+                }
+            }
+        }
 
         stage('Install Dependencies') {
             steps {
