@@ -10,20 +10,7 @@ pipeline {
                 }
             }
         }
-
-        stage('Install Dependencies') {
-            steps {
-                script {
-                    // Install Yarn
-                    bat 'npm install -g yarn'
-                    bat 'yarn -v'
-
-                    // Install project dependencies
-                    bat 'yarn install'
-                }
-            }
-        }
-
+        
         stage('Linting') {
             steps {
                 script {
