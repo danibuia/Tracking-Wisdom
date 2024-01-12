@@ -19,6 +19,7 @@ pipeline {
 
                     // Install project dependencies
                     bat(script: "${yarnPath}\\yarn install", returnStatus: true)
+                    bat(script: yarn -v)
                 }
             }
         }
