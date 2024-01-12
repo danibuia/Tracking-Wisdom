@@ -12,6 +12,7 @@ pipeline {
         }
 
             // Use the globally installed Yarn binary
+            /* groovylint-disable-next-line NoDef, VariableTypeRequired */
             def yarnPath = bat(script: 'yarn global bin', returnStatus: true).trim()
 
             // Install project dependencies
