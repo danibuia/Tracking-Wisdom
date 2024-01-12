@@ -1,3 +1,4 @@
+/* groovylint-disable CompileStatic */
 pipeline {
     agent any
     stages {
@@ -8,13 +9,12 @@ pipeline {
                 }
             }
         }
- 
+
         stage('Install Dependencies') {
             steps {
                 script {
-
                     // Install Yarn
-                    sh "npm install -g yarn@${YARN_VERSION}"
+                    sh 'npm install -g yarn'
 
                     // Install project dependencies
                     sh 'yarn install'
@@ -23,6 +23,14 @@ pipeline {
         }
 
         stage('Linting') {
+            steps {
+                script {
+                    sh 'yarn lint'
+                }
+            }
+        }
+
+        stage('Build') {
             steps {
                 script {
                     sh 'yarn build'
@@ -34,14 +42,6 @@ pipeline {
             steps {
                 script {
                     sh 'yarn test'
-                }
-            }
-        }
-
-        stage('Build') {
-            steps {
-                script {
-                    sh 'yarn build'
                 }
             }
         }

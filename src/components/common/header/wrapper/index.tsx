@@ -1,5 +1,5 @@
 import { AppBar as MuiAppBar, AppBarProps, styled, Toolbar } from '@mui/material';
-import { drawerWidth } from '../../../../components/common/side-drawer/index.styled';
+// import { drawerWidth } from '../../../../components/common/side-drawer/index.styled';
 import { FC, ReactNode } from 'react';
 
 interface CustAppBarProps extends AppBarProps {
@@ -20,8 +20,8 @@ const AppBar: FC<CustAppBarProps> = styled(MuiAppBar as FC<CustAppBarProps>, {
 	}),
 	...(isDrawerOpen && {
 		display: 'flex',
-		marginLeft: drawerWidth,
-		width: `calc(100% - ${drawerWidth}px)`,
+		// marginLeft: drawerWidth,
+		// width: `calc(100% - ${drawerWidth}px)`,
 		transition: theme.transitions.create(['width', 'margin'], {
 			easing: theme.transitions.easing.sharp,
 			duration: theme.transitions.duration.enteringScreen,
