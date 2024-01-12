@@ -1,0 +1,58 @@
+pipeline {
+    agent any
+    stages {
+        stage('Checkout') {
+            steps {
+                script {
+                    git branch: 'main', url: 'https://github.com/danibuia/Tracking-Wisdom.git'
+                }
+            }
+        }
+ 
+        stage('Install Dependencies') {
+            steps {
+                script {
+
+                    // Install Yarn
+                    sh "npm install -g yarn@${YARN_VERSION}"
+
+                    // Install project dependencies
+                    sh 'yarn install'
+                }
+            }
+        }
+
+        stage('Linting') {
+            steps {
+                script {
+                    sh 'yarn build'
+                }
+            }
+        }
+
+        stage('Testing') {
+            steps {
+                script {
+                    sh 'yarn test'
+                }
+            }
+        }
+
+        stage('Build') {
+            steps {
+                script {
+                    sh 'yarn build'
+                }
+            }
+        }
+    }
+
+    post {
+        success {
+            echo 'CI/CD pipeline succeeded! Deploy your application if needed.'
+        }
+        failure {
+            echo 'CI/CD pipeline failed! Take necessary actions to fix the issues.'
+        }
+    }
+}
