@@ -1,4 +1,4 @@
-/* groovylint-disable CompileStatic */
+/* groovylint-disable CompileStatic, Indentation */
 pipeline {
     agent any
     stages {
@@ -11,12 +11,17 @@ pipeline {
             }
         }
 
-            // Use the globally installed Yarn binary
-            /* groovylint-disable-next-line NoDef, VariableTypeRequired */
-            def yarnPath = bat(script: 'yarn global bin', returnStatus: true).trim()
+        stage('Install Dependencies') {
+            steps {
+                script {
+                    // Use the globally installed Yarn binary
+                    def yarnPath = bat(script: 'yarn global bin', returnStatus: true).trim()
 
-            // Install project dependencies
-            bat "${yarnPath}\\yarn install"
+                    // Install project dependencies
+                    bat(script: "${yarnPath}\\yarn install", returnStatus: true)
+                }
+            }
+        }
 
         stage('Linting') {
             steps {
